@@ -271,31 +271,48 @@ const freeApi = [
 console.log(freeApi.length);
 
 let show = document.getElementById("display");
+let listShow = document.getElementById('select');
+
+for (let i = 0; i < freeApi.length; i++){
+  listShow.innerHTML += `<option>${freeApi[i].category}</option>`
+}
+
+// const addedCategories = new Set();
+// for (let i = 0; i < freeApi.length; i++) {
+//   if (!addedCategories.has(freeApi[i].category)) {
+//     listShow.innerHTML += `<option>${freeApi[i].category}</option>`;
+//     addedCategories.add(freeApi[i].category);
+//   }
+// }
 
 for (i = 0; i < freeApi.length; i++) {
-  console.log(freeApi[i].title);
-  show.innerHTML += `<div class="col">
-        <div class="card mb-3" style="max-width: 540px;">
-          <div class="row g-0">
-            <div class="col-md-6 text-center">
-              <img src="${freeApi[i].image}" class="img-fluid rounded-start" alt="...">
+  show.innerHTML += `<div class="card border-0 rounded-0 shadow" style="width: 18rem;">
+        <img src="${freeApi[i].image}" class="card-img-top rounded-0" alt="...">
+        <div class="card-body mt-3 mb-3">
+          <div class="row">
+            <div class="col-10">
+              <h4 class="card-title">${freeApi[i].title}</h4>
+              <p class="card-text"><b>Category:</b> ${freeApi[i].category}</p>
+              <p class="card-text">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                (${freeApi[i].rating.rate})
+              </p>
             </div>
-            <div class="col-md-6">
-              <div class="card-body">
-                <h5 class="card-title">
-                  ${freeApi[i].title}
-                </h5>
-                <p class="card-text">
-                ${freeApi[i].category}
-                </p>
-                <p class="card-text">
-                  <small class="text-muted">
-                    Last updated now
-                  </small>
-                </p>
-              </div>
+            <div class="col-2">
+              <i class="bi bi-bookmark-plus fs-2"></i>
             </div>
           </div>
         </div>
-      </div>`;
+        <div class="row align-items-center text-center g-0">
+          <div class="col-4">
+            <h5>$${freeApi[i].price}</h5>
+          </div>
+          <div class="col-8">
+            <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-warning">ADD TO CART</a>
+          </div>
+        </div>
+      </div>`
 }
